@@ -1,0 +1,9 @@
+header figure svg {
+	max-height: 10vh;
+	max-width: 10vh;
+}
+
+header figure figcaption h1 {
+	font-family: Lato;
+	font-size: 5vh;
+}

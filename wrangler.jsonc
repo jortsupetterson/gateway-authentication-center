@@ -3,11 +3,17 @@
  * https://developers.cloudflare.com/workers/wrangler/configuration/
  */
 {
+	"account_id": "610496ac00ef9a268f611d5a29234d53",
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "web-authn-center",
+	"name": "api-authentication-center",
 	"main": "./dist/api/entrypoint.js",
 	"compatibility_date": "2025-09-24",
 	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"build": {
+		"watch_dir": "./src",
+		"command": "node build.js",
+		"cwd": "."
+	},
 	"assets": {
 		// The path to the directory containing the `index.html` file to be served at `/`
 		"directory": "./dist/assets"
@@ -17,16 +23,12 @@
 	},
 	"d1_databases": [
 		{
-			"database_id": "81b84b21-a269-48ae-99f9-c72540a13b4a",
-			"binding": "WEBAUTHN_D1",
+			"database_id": "3264faca-2f1f-412c-98d8-441d5daa8c56",
+			"binding": "AAOTW_RP_REGISTRY",
 			"remote": true
 		}
-	]
-	/**
-	 * Smart Placement
-	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
-	 */
-	// "placement": { "mode": "smart" }
+	],
+	"placement": { "mode": "smart" }
 	/**
 	 * Bindings
 	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including

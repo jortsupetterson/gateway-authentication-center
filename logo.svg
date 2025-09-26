@@ -1,0 +1,41 @@
+<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t3">
+  <title id="t3">Authentication Center — orbiting rings + shield seal (depth)</title>
+  <style>
+    :root { --c:#ffffff }
+
+    /* pyöritys orbiiteille */
+    .orbit-mid  { transform-origin: 48px 48px; animation: spin 18s linear infinite; }
+    .orbit-top  { transform-origin: 48px 48px; animation: spin 28s linear infinite reverse; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+
+  <!-- defs: kevyt varjo ulkorenkaalle -->
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="0.8" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- LAYER 1: SHIELD (TAKANA), pienennetty ~68% ja keskitetty -->
+  <path d="M48 18c8 5 16 6 24 8v18c0 16-13 28-24 34-11-6-24-18-24-34V26c8-2 16-3 24-8Z"
+        fill="none" stroke="var(--c)" stroke-width="3" stroke-opacity="0.6"
+        transform="translate(15.36 15.36) scale(0.68)" />
+
+  <!-- LAYER 2: SISÄRENGAS (KILVEN PÄÄLLÄ) -->
+  <circle class="orbit-mid" cx="48" cy="48" r="32"
+          fill="none" stroke="var(--c)" stroke-width="2.2"
+          stroke-linecap="round" stroke-dasharray="10 6" opacity="0.9"/>
+
+  <!-- LAYER 3: ULKORENGAS (ETUALA + VARJO) -->
+  <circle class="orbit-top" cx="48" cy="48" r="40"
+          fill="none" stroke="var(--c)" stroke-width="2.6"
+          stroke-linecap="round" stroke-dasharray="14 9" opacity="0.95"
+          filter="url(#softShadow)"/>
+
+  <!-- SEAL / ROMBI (keskellä, näkyy renkaiden välistä) -->
+  <rect x="40" y="40" width="16" height="16" transform="rotate(45 48 48)"
+        fill="var(--c)" opacity=".18" />
+  <rect x="42" y="42" width="12" height="12" transform="rotate(45 48 48)"
+        fill="none" stroke="var(--c)" stroke-width="3"/>
+</svg>
