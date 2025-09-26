@@ -11,6 +11,20 @@
 	}
 }
 
+html {
+	min-width: 100vw;
+	min-height: 100vh;
+	font-weight: 400;
+	overflow-x: hidden;
+	overflow-y: auto;
+	text-rendering: optimizeLegibility;
+	font-kerning: none;
+	font-variant-ligatures: none;
+	font-feature-settings: 'liga' 0, 'kern' 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
 html,
 body {
 	background: var(--b);

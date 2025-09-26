@@ -1,3 +1,26 @@
+header {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%);
+	min-width: 90%;
+	max-width: 90%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header figure {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	max-width: 60%;
+	margin-block-start: 0 !important;
+	margin-block-end: 0 !important;
+	margin-inline-start: 0 !important;
+	margin-inline-end: 0 !important;
+}
+
 header figure svg {
 	max-height: 10vh;
 	max-width: 10vh;
@@ -5,5 +28,32 @@ header figure svg {
 
 header figure figcaption h1 {
 	font-family: Lato;
-	font-size: 5vh;
+	font-size: 2.5vh;
+}
+
+.orbit-mid {
+	transform-origin: 48px 48px;
+	animation: spin 18s linear infinite;
+}
+.orbit-top {
+	transform-origin: 48px 48px;
+	animation: spin 28s linear infinite reverse;
+}
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+header div#langSelector button {
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	border: none;
+	background: transparent;
+}
+
+header div#langSelector button svg {
+	height: 3vh;
+	width: 3vh;
 }
