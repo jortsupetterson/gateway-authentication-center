@@ -48,7 +48,7 @@ async function buildStylesheet(newVersion) {
 	});
 }
 
-async function buildEdgeApi() {
+async function buildEdgeApi(newVersion) {
 	await build({
 		bundle: true,
 		charset: 'utf8',
@@ -66,10 +66,10 @@ async function buildBrowserScripts(newVersion) {
 	await build({
 		bundle: true,
 		charset: 'utf8',
-		entryPoints: ['./src/scripts/default/events.js', './src/scripts/otc/events.js'],
+		entryPoints: ['./src/client/index.js', './src/client/workers/authCorridorPainter.worker.js'],
 		external: ['/V£RSION/*', `/${newVersion}/*`],
 		minify: true,
-		outdir: `./dist/assets/${newVersion}/scripts`,
+		outdir: `./dist/assets/${newVersion}`,
 		platform: 'browser',
 		plugins: [contentMinifierPlugin({ version: newVersion })],
 		treeShaking: true,
@@ -78,7 +78,7 @@ async function buildBrowserScripts(newVersion) {
 
 try {
 	await rm(`./dist/assets/${oldVersion}`, { force: true, recursive: true });
-	await Promise.all([buildStylesheet(newVersion), buildEdgeApi()]);
+	await Promise.all([buildStylesheet(newVersion), buildBrowserScripts(newVersion), buildEdgeApi(newVersion)]);
 	await writeFile('./state.txt', newVersion);
 } catch (err) {
 	await writeFile('./state.txt', newVersion);

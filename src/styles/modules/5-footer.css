@@ -14,3 +14,13 @@ footer nav {
 	align-items: center;
 	gap: 10%;
 }
+footer nav small a {
+	text-decoration: none;
+	color: var(--c);
+}
+
+footer nav small a:hover,
+footer nav small a:focus {
+	outline: none;
+	text-decoration: underline;
+}

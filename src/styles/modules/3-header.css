@@ -19,6 +19,7 @@ header figure {
 	margin-block-end: 0 !important;
 	margin-inline-start: 0 !important;
 	margin-inline-end: 0 !important;
+	contain: content;
 }
 
 header figure svg {
@@ -43,6 +44,10 @@ header figure figcaption h1 {
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+header div#langSelector {
+	border: solid 1px;
 }
 
 header div#langSelector button {

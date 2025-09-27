@@ -1,0 +1,68 @@
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 70vh;
+	max-width: 90%;
+}
+
+main form {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 2vh;
+	background: var(--g);
+	height: 60vh;
+	border-radius: 2vh;
+	padding: 2vh;
+}
+
+main form div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+main div h2 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	font-size: large;
+	font-weight: 300;
+}
+
+main form div p {
+	margin: 0;
+}
+main form div ul {
+	margin: 0;
+}
+
+main div input {
+	height: 3vh;
+	width: 300px;
+	max-width: 90%;
+	background: transparent;
+	color: var(--c);
+	border: solid 0.3vh var(--c);
+	border-radius: 1vh;
+	font-size: medium;
+	padding: 1vh 2vh;
+	text-align: left;
+	font-weight: 300;
+	font-family: Lato;
+}
+
+main div input:focus {
+	outline: none;
+	background: transparent;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-focus-ring-color: transparent;
+}

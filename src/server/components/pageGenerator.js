@@ -11,7 +11,7 @@ export default async function pageGenerator(env, lang, view, nonce, cookie, head
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>${title[lang]} | ${name}</title>
+		<title>${title[lang]}</title>
 		<meta name="author" content="Jori Lehtinen" />
 		<meta name="description" content="${description[lang]}" />
 
@@ -116,6 +116,7 @@ export default async function pageGenerator(env, lang, view, nonce, cookie, head
 				]
 			}
 		</script>
+		<script type="module" src="/V£RSION/index.js"></script>
 	</head>
 	<body>
 <header>
@@ -172,12 +173,17 @@ export default async function pageGenerator(env, lang, view, nonce, cookie, head
         </main>
 		<footer role="contentinfo">
 			<nav aria-label="Legal">
+				<small>
 				<a href="https://authentication.center/privacy" rel="nofollow">Tietosuojakäytäntö</a>
+				</small>
+				<small>
 				<a href="https://authentication.center/terms" rel="nofollow">Käyttöehdot</a>
+				</small>
 			</nav>
-			<small>&copy; ${new Date().getFullYear()} authentication.center</small>
+			<small>&copy; ${new Date().getFullYear()} \u0020 Authentication Center</small>
 		</footer>
 	</body>
+	<canvas id="auth-corridor" aria-hidden="true"></canvas>
 </html>
     `;
 }
