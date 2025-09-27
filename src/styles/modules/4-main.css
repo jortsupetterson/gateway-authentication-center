@@ -3,7 +3,6 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	min-height: 70vh;
 	max-width: 90%;
 }
 
@@ -14,9 +13,9 @@ main form {
 	align-items: center;
 	gap: 2vh;
 	background: var(--g);
-	height: 60vh;
 	border-radius: 2vh;
 	padding: 2vh;
+	max-width: 90%;
 }
 
 main form div {
@@ -24,14 +23,29 @@ main form div {
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
+	min-width: 90%;
+	max-width: 90%;
 }
 
-main div h2 {
+main form div.row {
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 2vh;
+}
+
+main form div img {
+	width: 7.5vh;
+	height: 7.5vh;
+	border-radius: 50%;
+}
+
+main form div h2 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
-	font-size: large;
+	font-size: medium;
 	font-weight: 300;
 }
 
@@ -41,15 +55,17 @@ main form div p {
 main form div ul {
 	margin: 0;
 }
+main form div ul li {
+	font-size: small;
+}
 
 main div input {
 	height: 3vh;
 	width: 300px;
-	max-width: 90%;
+	max-width: 80%;
 	background: transparent;
 	color: var(--c);
-	border: solid 0.3vh var(--c);
-	border-radius: 1vh;
+	border: none;
 	font-size: medium;
 	padding: 1vh 2vh;
 	text-align: left;
@@ -65,4 +81,37 @@ main div input:focus {
 	appearance: none;
 	-webkit-tap-highlight-color: transparent;
 	-webkit-focus-ring-color: transparent;
+}
+
+main form small {
+	font-size: xx-small;
+	max-width: 250px;
+}
+
+main form button {
+	background: var(--c);
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+main form button svg {
+	width: 3vh;
+	height: 3vh;
+}
+
+main form button:hover,
+main form button:focus {
+	cursor: pointer;
+}
+
+main form button#no-passkey {
+	background: transparent;
+}
+
+main form button#no-passkey:hover,
+main form button#no-passkey:focus {
+	outline: none;
+	text-decoration: underline;
 }

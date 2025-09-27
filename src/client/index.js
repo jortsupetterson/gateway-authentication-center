@@ -1,4 +1,3 @@
-import { initCorridor } from './components/initCorridor';
 async function handleAnonymousAuthenticationOnTheWeb() {
 	const input = document.getElementById('email_address');
 	const sessionEmail = sessionStorage.getItem('email_address');

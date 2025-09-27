@@ -14,6 +14,7 @@ export default async function pageGenerator(env, lang, view, nonce, cookie, head
 		<title>${title[lang]}</title>
 		<meta name="author" content="Jori Lehtinen" />
 		<meta name="description" content="${description[lang]}" />
+		<link rel="icon" type="image/png" sizes="512x512" href="https://assets.authentication.center/favicon.png">
 
 		<meta property="og:locale" content="${locale[lang]}" />
 		<meta property="og:type" content="website" />
@@ -183,7 +184,6 @@ export default async function pageGenerator(env, lang, view, nonce, cookie, head
 			<small>&copy; ${new Date().getFullYear()} \u0020 Authentication Center</small>
 		</footer>
 	</body>
-	<canvas id="auth-corridor" aria-hidden="true"></canvas>
-</html>
+	</html>
     `;
 }

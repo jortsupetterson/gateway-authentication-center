@@ -7,5 +7,5 @@ export async function handleDefault({ cf, env, ctx, lang, nonce, cookie, params,
 		const credential = await fetchWebAuthnCredential(env);
 		if (!credential) throw new Error('Invalid "encrypted_email" cookie');
 	}
-	return new Response(await pageGenerator(env, lang, view, nonce, cookie, headers), { status: 200, headers: responseHeaders });
+	return new Response(await pageGenerator(env, lang, view(lang), nonce, cookie, headers), { status: 200, headers: responseHeaders });
 }

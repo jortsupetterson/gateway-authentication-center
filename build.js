@@ -66,7 +66,7 @@ async function buildBrowserScripts(newVersion) {
 	await build({
 		bundle: true,
 		charset: 'utf8',
-		entryPoints: ['./src/client/index.js', './src/client/workers/authCorridorPainter.worker.js'],
+		entryPoints: ['./src/client/index.js'],
 		external: ['/V£RSION/*', `/${newVersion}/*`],
 		minify: true,
 		outdir: `./dist/assets/${newVersion}`,
