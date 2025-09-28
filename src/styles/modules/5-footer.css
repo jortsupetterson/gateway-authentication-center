@@ -12,15 +12,25 @@ footer nav {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 10%;
+	gap: 5%;
 }
+footer nav small,
 footer nav small a {
 	text-decoration: none;
+	min-width: max-content;
 	color: var(--c);
+	word-break: normal;
 }
 
 footer nav small a:hover,
 footer nav small a:focus {
 	outline: none;
 	text-decoration: underline;
+}
+
+footer nav span {
+	min-width: 0.3vh;
+	min-height: 0.3vh;
+	border-radius: 100%;
+	background: var(--c);
 }

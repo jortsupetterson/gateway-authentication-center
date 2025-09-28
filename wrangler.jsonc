@@ -5,7 +5,7 @@
 {
 	"account_id": "610496ac00ef9a268f611d5a29234d53",
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "api-authentication-center",
+	"name": "gateway-authentication-center",
 	"main": "./dist/api/entrypoint.js",
 	"compatibility_date": "2025-09-24",
 	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],

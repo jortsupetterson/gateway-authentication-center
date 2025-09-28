@@ -11,7 +11,7 @@ main form {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	gap: 2vh;
+	gap: 3vh;
 	background: var(--g);
 	border-radius: 2vh;
 	padding: 2vh;
@@ -22,7 +22,7 @@ main form div {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: center;
 	min-width: 90%;
 	max-width: 90%;
 }
@@ -51,18 +51,25 @@ main form div h2 {
 
 main form div p {
 	margin: 0;
+	max-width: 90%;
 }
 main form div ul {
 	margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	min-width: 80%;
 }
 main form div ul li {
 	font-size: small;
+	text-align: left;
 }
 
 main div input {
 	height: 3vh;
 	width: 300px;
-	max-width: 80%;
+	max-width: 100%;
 	background: transparent;
 	color: var(--c);
 	border: none;
@@ -94,11 +101,19 @@ main form button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	min-height: 5vh;
+	border-radius: 0 1vh 1vh 0;
+}
+
+button#passkey,
+button#otc {
+	transform: translate(1vh);
+	padding-right: 2vh;
 }
 
 main form button svg {
-	width: 3vh;
-	height: 3vh;
+	width: 4vh;
+	height: 4vh;
 }
 
 main form button:hover,
@@ -114,4 +129,22 @@ main form button#no-passkey:hover,
 main form button#no-passkey:focus {
 	outline: none;
 	text-decoration: underline;
+}
+
+main form div#field {
+	border: solid 0.3vh var(--c);
+	border-radius: 1vh;
+	overflow: hidden;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+	box-shadow: 0 0 0 1000px transparent inset !important;
+	background-color: transparent !important;
+	-webkit-text-fill-color: var(--c) !important;
+	caret-color: var(--c);
+	transition: background-color 9999s ease-in-out 0s;
+	font-size: medium;
+	font-family: Lato;
 }

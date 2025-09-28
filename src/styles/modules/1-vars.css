@@ -2,7 +2,7 @@
 	--b: #ffffff;
 	--c: #000000;
 	--g: rgba(0, 0, 0, 0.05);
-	--g: #f2f2f2;
+	--s: #f2f2f2;
 	color-scheme: light dark;
 }
 
@@ -11,7 +11,7 @@
 		--b: #000000;
 		--c: #ffffff;
 		--g: rgba(255, 255, 255, 0.05);
-		--g: #0d0d0d;
+		--s: #0d0d0d;
 	}
 }
 

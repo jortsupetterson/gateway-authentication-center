@@ -1,9 +1,28 @@
+import updateLanguage from './components/languageUpdater';
 async function handleAnonymousAuthenticationOnTheWeb() {
 	const input = document.getElementById('email_address');
 	const sessionEmail = sessionStorage.getItem('email_address');
 	if (input && sessionEmail) input.value = sessionEmail;
 	input?.addEventListener('input', (event) => {
 		sessionStorage.setItem('email_address', event.target.value);
+	});
+
+	const langList = document.querySelector('#langSelector ul');
+	const langBtn = document.getElementById('langBtn');
+	langBtn.addEventListener('mouseenter', async () => {
+		langList.classList.toggle('active');
+	});
+	langList.addEventListener('mouseleave', async () => {
+		langList.classList.toggle('active');
+	});
+
+	langList.querySelectorAll('button').forEach((btn) => {
+		btn.addEventListener('click', () => {
+			const lang = btn.textContent.trim().toLowerCase();
+			history.pushState({ lang }, '', `/${lang}`);
+			langList.classList.toggle('active');
+			window.location.href = `/${lang}`;
+		});
 	});
 }
 

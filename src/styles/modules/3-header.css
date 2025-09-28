@@ -33,10 +33,12 @@ header figure figcaption h1 {
 }
 
 .orbit-mid {
+	will-change: transform;
 	transform-origin: 48px 48px;
 	animation: spin 18s linear infinite;
 }
 .orbit-top {
+	will-change: transform;
 	transform-origin: 48px 48px;
 	animation: spin 28s linear infinite reverse;
 }
@@ -47,7 +49,11 @@ header figure figcaption h1 {
 }
 
 header div#langSelector {
-	border: solid 1px;
+	position: fixed;
+	background: transparent;
+	top: 2.5vh;
+	right: 2vh;
+	padding: 2vh;
 }
 
 header div#langSelector button {
@@ -58,7 +64,59 @@ header div#langSelector button {
 	background: transparent;
 }
 
+header div#langSelector button#langBtn {
+	position: absolute;
+	top: 1vh;
+	right: 0;
+	z-index: 0;
+}
+
 header div#langSelector button svg {
 	height: 3vh;
 	width: 3vh;
+}
+
+header div#langSelector ul {
+	will-change: max-height, padding;
+	transition: max-height 0.25s ease-in-out, padding 0.25s ease-in-out;
+	background: var(--s);
+	max-height: 0;
+	list-style: none;
+	position: absolute;
+	top: -3vh;
+	right: -1vh;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 2vh;
+	border-radius: 1vh;
+	overflow: hidden;
+	border: none;
+	width: 2vh;
+	padding: 0 5vh 0 5vh;
+}
+
+header div#langSelector ul.active {
+	max-height: 20vh;
+	padding: 5vh;
+	box-shadow: 0 2px 6px color-mix(in srgb, var(--c) 20%, transparent);
+}
+
+header div#langSelector ul li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+header div#langSelector ul li button {
+	font-family: Lato;
+	font-weight: 700;
+}
+
+header div#langSelector button:focus,
+header div#langSelector button:hover {
+	outline: none;
+	text-decoration: underline;
+	cursor: pointer;
 }

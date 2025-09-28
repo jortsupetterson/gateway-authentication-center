@@ -1,5 +1,5 @@
 {
-	"name": "api-authentication-center",
+	"name": "gateway-authentication-center",
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
