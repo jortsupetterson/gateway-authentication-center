@@ -1,0 +1,47 @@
+const physicalShardnames = ["ps_00", "ps_01", "ps_02", "ps_03", "ps_04", "ps_05", "ps_06", "ps_07"] tai suoraan instanssit bindingeina riippuu toteutustavasta
+
+const vmapTable = new Uint8Array(4096);
+for (let slotIndex = 0; slotIndex < 4096; slotIndex++) {
+    vmapTable[slotIndex] = slotIndex % physicalShardnames.length;
+}
+console.log(vmapTable)
+Uint8Array(4096) [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, …]
+
+const uuid = crypto.randomUUID();
+console.log(uuid)
+b9bbbfaf-406f-4a8a-80f3-ce7a762c8d3a
+
+const hex = uuid.replace(/-/g,"").toLowerCase();
+console.log(hex)
+b9bbbfaf406f4a8a80f3ce7a762c8d3a
+
+const bytes = new Uint8Array(16);
+for (let i=0; i<16; i++) {
+    const byteHex = hex.substr(i * 2, 2);
+    bytes[i] = parseInt(byteHex,16);
+}
+console.log(bytes)
+Uint8Array(16) [185, 187, 191, 175, 64, 111, 74, 138, 128, 243, 206, 122, 118, 44, 141, 58, buffer: ArrayBuffer(16), byteLength: 16, byteOffset: 0, length: 16, Symbol(Symbol.toStringTag): 'Uint8Array']
+
+const buffer = await crypto.subtle.digest("SHA-256", bytes.buffer);
+const digest = new Uint8Array(buffer);
+console.log(digest);
+Uint8Array(32) [221, 170, 213, 54, 28, 255, 64, 60, 169, 130, 59, 183, 230, 243, 231, 227, 64, 69, 67, 35, 79, 84, 18, 75, 63, 173, 183, 8, 160, 248, 163, 13, buffer: ArrayBuffer(32), byteLength: 32, byteOffset: 0, length: 32, Symbol(Symbol.toStringTag): 'Uint8Array']
+
+const first16 = (digest[0] << 8) | digest[1];
+console.log(first16);
+56746
+
+const slot = first16 >>> 4;
+console.log(slot)
+3546
+
+const physicalIndex = vmapTable[slot];
+console.log(physicalIndex)
+2
+
+const physicalId = physicalShardnames[physicalIndex]
+console.log(physicalId)
+
+ps_02
+

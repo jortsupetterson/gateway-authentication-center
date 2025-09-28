@@ -25,6 +25,11 @@ header figure {
 header figure svg {
 	max-height: 10vh;
 	max-width: 10vh;
+	width: 10vh;
+	height: 10vh;
+	display: block;
+	aspect-ratio: 1 / 1;
+	margin: 0 auto;
 }
 
 header figure figcaption h1 {

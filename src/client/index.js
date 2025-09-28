@@ -12,7 +12,7 @@ async function handleAnonymousAuthenticationOnTheWeb() {
 	langBtn.addEventListener('mouseenter', async () => {
 		langList.classList.toggle('active');
 	});
-	langList.addEventListener('mouseleave', async () => {
+	document.addEventListener('click', async () => {
 		langList.classList.toggle('active');
 	});
 
@@ -20,7 +20,6 @@ async function handleAnonymousAuthenticationOnTheWeb() {
 		btn.addEventListener('click', () => {
 			const lang = btn.textContent.trim().toLowerCase();
 			history.pushState({ lang }, '', `/${lang}`);
-			langList.classList.toggle('active');
 			window.location.href = `/${lang}`;
 		});
 	});

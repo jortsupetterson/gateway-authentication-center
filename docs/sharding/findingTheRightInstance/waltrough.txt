@@ -1,0 +1,45 @@
+(FI)
+Aloitetaan fyysisten shardien listalla: ["ps_00", "ps_01", "ps_02", "ps_03", "ps_04", "ps_05", "ps_06", "ps_07"], jotka voisivat olla myös suoraan instanssibindingeja toteutustavasta riippuen.
+
+Luodaan 4096-alkioinen Uint8Array nimeltä vmapTable ja täytetään se siten, että jokainen slotIndex saa arvon slotIndex % physicalShardnames.length. Tuloksena saadaan 4096 kahdeksanbittistä kokonaislukua, jotka toistuvat tasaisesti 0–7. Konsolissa näkyy esimerkiksi: Uint8Array(4096) [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, …]
+
+Generoidaan satunnainen UUID käyttäen crypto.randomUUID(). Tämä UUID tulisi normaalisti esimerkiksi API-requestin bodysta tai cookiesta. Esimerkkituloste: b9bbbfaf-406f-4a8a-80f3-ce7a762c8d3a
+
+Poistetaan UUID:sta väliviivat ja muunnetaan pieniksi kirjaimiksi, jolloin saadaan heksamerkkijono: b9bbbfaf406f4a8a80f3ce7a762c8d3a
+
+Luodaan Uint8Array(16) ja parsitaan heksamerkit kahden merkin pareina tavuihin. Tuloksena: Uint8Array(16) [185, 187, 191, 175, 64, 111, 74, 138, 128, 243, 206, 122, 118, 44, 141, 58]
+
+Lasketaan 256-bittinen SHA-256-hash WebCryptolla bytes.bufferista ja muunnetaan tulos Uint8Array(32)-muotoon. Konsolissa näkyy esimerkiksi: Uint8Array(32) [221, 170, 213, 54, 28, 255, 64, 60, …]
+
+Poimitaan ensimmäiset 16 bittiä hashista kaavalla (digest[0] << 8) | digest[1], joka yhdistää kaksi ensimmäistä tavua 16-bittiseksi kokonaisluvuksi. Esimerkkituloste: 56746
+
+Normalisoidaan tämä arvo 12-bittiseksi siirtämällä neljä bittiä oikealle: first16 >>> 4. Tuloksena arvo väliltä 0–4095. Esimerkkituloste: 3546
+
+Käytetään tätä slottiarvoa indeksinä vmapTable-taulukkoon, jolloin saadaan fyysisen shardin indeksinumero. Esimerkkituloste: 2
+
+Haetaan fyysinen shardin tunniste fyysisten shardien listasta indeksillä 2: physicalShardnames[2] → ps_02
+
+Näin saadaan deterministisesti ja aina samassa ajassa oikea tietokanta-instanssi satunnaisesta UUID:sta riippumatta.
+
+(EN)
+Start with a list of physical shards: ["ps_00", "ps_01", "ps_02", "ps_03", "ps_04", "ps_05", "ps_06", "ps_07"], which could also be direct instance bindings depending on the implementation.
+
+Create a 4096-element Uint8Array called vmapTable and fill it so that each slotIndex gets the value slotIndex % physicalShardnames.length. The result is 4096 eight-bit integers repeating evenly from 0–7. In the console you might see: Uint8Array(4096) [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, …]
+
+Generate a random UUID with crypto.randomUUID(). In a real system this UUID would normally come from an API request body or cookie. Example output: b9bbbfaf-406f-4a8a-80f3-ce7a762c8d3a
+
+Strip hyphens and convert to lowercase to get a hex string: b9bbbfaf406f4a8a80f3ce7a762c8d3a
+
+Create a Uint8Array(16) and parse the hex string into bytes two characters at a time. Result: Uint8Array(16) [185, 187, 191, 175, 64, 111, 74, 138, 128, 243, 206, 122, 118, 44, 141, 58]
+
+Compute a 256-bit SHA-256 hash of bytes.buffer using WebCrypto, and convert the result to a Uint8Array(32). Console shows for example: Uint8Array(32) [221, 170, 213, 54, 28, 255, 64, 60, …]
+
+Take the first 16 bits using (digest[0] << 8) | digest[1], combining the first two bytes into a 16-bit integer. Example result: 56746
+
+Normalize to 12 bits by shifting right 4 bits: first16 >>> 4. The result is in the range 0–4095. Example: 3546
+
+Use this slot value as an index into vmapTable to get the physical shard index. Example: 2
+
+Fetch the physical shard identifier from the list using that index: physicalShardnames[2] → ps_02
+
+This way, the system deterministically and in constant time selects the correct database instance from an arbitrary UUID, regardless of how many shards exist.
