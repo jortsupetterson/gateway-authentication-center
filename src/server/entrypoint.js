@@ -9,14 +9,17 @@ export default {
 	async fetch({ cf, url, headers }, env, ctx) {
 		try {
 			const { origin, pathname, searchParams } = new URL(url);
+			const relyingParty = fetchRelyingParty(env, searchParams);
 			const [nonce, virtualCookie, virtualPath] = await Promise.all([
 				generateNonce(24),
 				virtualizeCookie(await headers.get('cookie')),
 				pathname.split('/').filter(Boolean),
 			]);
+			const key = virtualPath.pop() ?? 'default';
+
 			const [lang, handler] = await Promise.all([
 				quessLanguage(virtualPath, virtualCookie, await headers.get('accept-language')),
-				handlerMap[virtualPath.pop()] ? handlerMap[virtualPath.pop()] : handlerMap['default'],
+				handlerMap[key] ?? handlerMap.default,
 			]);
 
 			return await handler({
@@ -26,8 +29,9 @@ export default {
 				lang,
 				nonce,
 				cookie: virtualCookie,
-				params: searchParams,
+				params: Object.fromEntries(searchParams),
 				headers,
+				relyingParty,
 				pageGenerator,
 				responseHeaders: await generateHeaders(lang, nonce),
 			});

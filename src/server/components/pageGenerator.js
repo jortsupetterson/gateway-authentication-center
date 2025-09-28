@@ -21,7 +21,7 @@ export default async function pageGenerator(env, lang, view, nonce, cookie, head
 		<meta property="og:site_name" content="${name}" />
 		<meta property="og:title" content="${title[lang]}" />
 		<meta property="og:description" content="${description[lang]}" />
-		<meta property="og:url" content="https://api.authentication.center/${lang}" />
+		<meta property="og:url" content="https://gateway.authentication.center/${lang}" />
 		<meta property="og:image" content="${social_sharing_image[lang]}" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
@@ -30,17 +30,17 @@ export default async function pageGenerator(env, lang, view, nonce, cookie, head
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content="${title[lang]}" />
 		<meta name="twitter:description" content="${description[lang]}" />
-		<meta name="twitter:url" content="https://api.authentication.center/${lang}" />
+		<meta name="twitter:url" content="https://gateway.authentication.center/${lang}" />
 		<meta name="twitter:image" content="${social_sharing_image.url}" />
 		<meta name="twitter:image:alt" content="${social_sharing_image.alt[lang]}" />
 		<meta name="twitter:site" content="@vorteapp" />
 		<meta name="twitter:creator" content="@vorteapp" />
 
-		<link rel="canonical" href="https://api.authentication.center/fi" />
-		<link rel="alternate" hreflang="fi" href="https://api.authentication.center/fi" />
-		<link rel="alternate" hreflang="sv" href="https://api.authentication.center/sv" />
-		<link rel="alternate" hreflang="en" href="https://api.authentication.center/en" />
-		<link rel="alternate" hreflang="x-default" href="https://api.authentication.center/en" />
+		<link rel="canonical" href="https://gateway.authentication.center/fi" />
+		<link rel="alternate" hreflang="fi" href="https://gateway.authentication.center/fi" />
+		<link rel="alternate" hreflang="sv" href="https://gateway.authentication.center/sv" />
+		<link rel="alternate" hreflang="en" href="https://gateway.authentication.center/en" />
+		<link rel="alternate" hreflang="x-default" href="https://gateway.authentication.center/en" />
 
 		<link rel="dns-prefetch" href="//assets.authentication.center" />
 		<link rel="dns-prefetch" href="//challenges.cloudflare.com" />
@@ -60,34 +60,34 @@ export default async function pageGenerator(env, lang, view, nonce, cookie, head
 				"@graph": [
 					{
 						"@type": "Person",
-						"@id": "https://api.authentication.center/#jori",
+						"@id": "https://gateway.authentication.center/#jori",
 						"name": "Jori Lehtinen"
 					},
 					{
 						"@type": "WebAPI",
-						"@id": "https://api.authentication.center/#aaotw",
+						"@id": "https://gateway.authentication.center/#aaotw",
 						"name": "AAOTW API",
 						"alternateName": "Anonymous Authentication on the Web API",
-						"url": "https://api.authentication.center",
+						"url": "https://gateway.authentication.center",
 						"category": "Identity and Access Management",
 						"description": "${description[lang]}",
 						"inLanguage": ["fi", "sv", "en"],
 						"isAccessibleForFree": true,
-						"provider": { "@id": "https://api.authentication.center/#jori" },
-						"endpointUrl": "https://api.authentication.center/v1",
-						"documentation": "https://api.authentication.center",
+						"provider": { "@id": "https://gateway.authentication.center/#jori" },
+						"endpointUrl": "https://gateway.authentication.center/v1",
+						"documentation": "https://gateway.authentication.center",
 						"termsOfService": "https://authentication.center/terms",
 						"privacyPolicy": "https://authentication.center/privacy"
 					},
 					{
 						"@type": "APIReference",
-						"@id": "https://api.authentication.center/#docs",
+						"@id": "https://gateway.authentication.center/#docs",
 						"name": "AAOTW API Documentation",
-						"about": { "@id": "https://api.authentication.center/#aaotw" },
+						"about": { "@id": "https://gateway.authentication.center/#aaotw" },
 						"url": "https://docs.authentication.center",
 						"inLanguage": ["fi", "sv", "en"],
-						"author": { "@id": "https://api.authentication.center/#jori" },
-						"publisher": { "@id": "https://api.authentication.center/#jori" },
+						"author": { "@id": "https://gateway.authentication.center/#jori" },
+						"publisher": { "@id": "https://gateway.authentication.center/#jori" },
 						"dateModified": "${new Date().toISOString()}",
 						"image": {
 							"@type": "ImageObject",
@@ -96,12 +96,12 @@ export default async function pageGenerator(env, lang, view, nonce, cookie, head
 					},
 					{
 						"@type": "WebPage",
-						"@id": "https://api.authentication.center/#webpage",
-						"url": "https://api.authentication.center",
+						"@id": "https://gateway.authentication.center/#webpage",
+						"url": "https://gateway.authentication.center",
 						"name": "AAOTW API",
 						"inLanguage": ["fi", "sv", "en"],
-						"author": { "@id": "https://api.authentication.center/#jori" },
-						"publisher": { "@id": "https://api.authentication.center/#jori" },
+						"author": { "@id": "https://gateway.authentication.center/#jori" },
+						"publisher": { "@id": "https://gateway.authentication.center/#jori" },
 						"primaryImageOfPage": {
 							"@type": "ImageObject",
 							"url": "https://assets.authentication.center/social_sharing_image.png"
@@ -111,7 +111,7 @@ export default async function pageGenerator(env, lang, view, nonce, cookie, head
 							"@id": "https://authentication.center/#website",
 							"url": "https://authentication.center",
 							"name": "Authentication Center",
-							"publisher": { "@id": "https://api.authentication.center/#jori" }
+							"publisher": { "@id": "https://gateway.authentication.center/#jori" }
 						}
 					}
 				]

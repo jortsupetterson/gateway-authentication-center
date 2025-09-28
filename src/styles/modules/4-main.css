@@ -105,8 +105,7 @@ main form button {
 	border-radius: 0 1vh 1vh 0;
 }
 
-button#passkey,
-button#otc {
+button#initialize {
 	transform: translate(1vh);
 	padding-right: 2vh;
 }
@@ -119,16 +118,6 @@ main form button svg {
 main form button:hover,
 main form button:focus {
 	cursor: pointer;
-}
-
-main form button#no-passkey {
-	background: transparent;
-}
-
-main form button#no-passkey:hover,
-main form button#no-passkey:focus {
-	outline: none;
-	text-decoration: underline;
 }
 
 main form div#field {
