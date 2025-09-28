@@ -1,4 +1,4 @@
-const physicalShardnames = ["ps_00", "ps_01", "ps_02", "ps_03", "ps_04", "ps_05", "ps_06", "ps_07"] tai suoraan instanssit bindingeina riippuu toteutustavasta
+const physicalShardnames = ["ps_00", "ps_01", "ps_02", "ps_03", "ps_04", "ps_05", "ps_06", "ps_07"]
 
 const vmapTable = new Uint8Array(4096);
 for (let slotIndex = 0; slotIndex < 4096; slotIndex++) {
