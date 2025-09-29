@@ -1,0 +1,44 @@
+// npm install @authentication-center/<platform>
+
+// endpoint that requires authentication
+import Authentication from '@authentication-center/<platform>';
+
+export default {
+  async fetch(request, env, ctx) {
+    const user = await Authentication({
+      request,
+      clientId: '<YOUR_AUTHENTICATION_CLIENT_ID_FROM_AUTHENTICATION_CENTER_DEVELOPER_DASHBOARD>',
+      saltStorage: env.<YOUR_KV_BINDING>,
+      dataType: 'base64url' // or 'blob'
+    });
+
+    return new Response(JSON.stringify({
+      id: user.id,         // 128-bit Base64url or Uint8Array (blob)
+      cryptokey: user.key  // 256-bit Base64url or Uint8Array (blob)
+    }), { headers: { 'Content-Type': 'application/json' } });
+
+    /*
+    use id for your business logic, e.g. checking payments, access control and querying.
+
+    use cryptokey to encrypt PII and anything else confidential per user.
+    you can also serve it as part of your HTML body, e.g.:
+      <html data-e2e="<cryptokey>">
+    to bootstrap client-side end-to-end encryption.
+
+    the confidentiality towards an end-to-end encryption service provider is practically the
+    same as client-managed keys, because the provider could always exfiltrate them from
+    the client software if they wanted. the big difference is convenience for both users
+    and developers — this is a cloud-native, neutral approach.
+
+    another benefit: you can store PII encrypted in a way that is only accessible when the
+    client is active. this is great for UX — you could, for example, use push notifications
+    (subscription not personally identifiable) to inform the user about some matter, and
+    when they authenticate you send down the E2E key to decrypt their data.
+
+    the UI code can then access the necessary information ephemerally, authorized by the user,
+    without forcing them to refill everything after every timeout.
+
+    this is a massive step towards respecting user data sovereignty.
+    */
+  }
+}

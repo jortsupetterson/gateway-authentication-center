@@ -1,0 +1,9 @@
+https://gateway.authentication.center
+  ?client_id=rp_dashboard
+  &redirect_uri=https%3A%2F%2Fdashboard.example.com%2Fauth%2Fcallback
+  &response_type=code
+  &scope=openid
+  &state=<base64url(random_state)>
+  &nonce=<base64url(random_nonce)>
+  &code_challenge=<base64url(SHA256(code_verifier))>
+  &code_challenge_method=S256

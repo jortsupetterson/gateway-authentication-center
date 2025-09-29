@@ -1,0 +1,24 @@
+PRAGMA foreign_keys = ON;
+
+-- Users table: holds the 256-bit user_id as the single source of truth.
+-- user_pk is an alias of rowid (auto-incrementing INTEGER PRIMARY KEY).
+CREATE TABLE IF NOT EXISTS users (
+  user_pk INTEGER PRIMARY KEY,
+  user_id BLOB NOT NULL UNIQUE,
+  CHECK(length(user_id) = 32) -- must always be exactly 32 bytes (256-bit)
+);
+
+-- Email index table: maps HMAC-derived pseudonymous indices to user_pk.
+-- kid is a version label like "V3", "V42", "V901" (must start with 'V' and have 1+ digits).
+-- PRIMARY KEY is composite (kid, pseudonymous_index) and WITHOUT ROWID
+-- removes the implicit rowid, saving space and using the PK as the B-tree key.
+CREATE TABLE IF NOT EXISTS email_index_map (
+  kid                TEXT    NOT NULL,
+  pseudonymous_index BLOB    NOT NULL,
+  user_pk            INTEGER NOT NULL,
+  created_at         INTEGER NOT NULL DEFAULT (unixepoch()),
+  PRIMARY KEY (kid, pseudonymous_index),
+  FOREIGN KEY(user_pk) REFERENCES users(user_pk) ON DELETE CASCADE,
+  CHECK(length(pseudonymous_index) = 16),   -- enforce exactly 16 bytes (128-bit)
+  CHECK(kid GLOB 'V[0-9]*')                -- must match "V" followed by digits (V0, V42, V901, etc.)
+) WITHOUT ROWID;
