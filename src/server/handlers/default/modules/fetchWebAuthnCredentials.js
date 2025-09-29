@@ -1,3 +1,5 @@
+export async function fetchWebAuthnCredentials() {}
+
 const row = await env.DB.prepare(
 	`SELECT u.user_id
    FROM email_index_map e

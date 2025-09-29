@@ -1,0 +1,9 @@
+NotAllowedError: käyttäjä perui, UI sulkeutui, tai timeout (yleisin).
+
+SecurityError: RP ID / origin ei matchaa (domain-ongelma).
+
+InvalidStateError: credential ei kelpaa (esim. resident/non-resident mismatch).
+
+NotSupportedError: ympäristö ei tue WebAuthn/UV-vaadetta.
+
+AbortError: keskeytettiin (AbortController tms.).

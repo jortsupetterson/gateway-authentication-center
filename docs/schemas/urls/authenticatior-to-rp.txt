@@ -1,0 +1,3 @@
+https://example.app/auth/callback
+  ?code=<auth_code>
+  &state=<echoed_state>

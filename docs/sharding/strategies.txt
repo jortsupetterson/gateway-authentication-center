@@ -1,0 +1,19 @@
+96 shards for id routing, shard seed is a plain normalized email as it stays the same regardless of rotations and
+the simple row meant for finding an id can be easily migrated incase a user wants to chance the email that "points"
+to their account. 96 physical shards meaning d1 instancess is also enough for handling this system on a global scale
+
+4096 credential shards for storing seed based on 3 first hex from user_id webAuthn credentials this should be sufficent as it can reach up to 40 tb of storage in
+physical d1 shards
+
+then of course for both we start with virtual shard as much as declared and add physical shards when needed
+
+for relying parties we might consider maybe 96 shards because at the end of the day there is a limited ammount of applications on the web
+
+AAOTW_<RESOURCE>_PS_<NNNNN>
+
+AAOTW_IDS_PS_00000
+
+AAOTW_RPS_PS_00000
+
+AAOTW_CREDENTIALS_PS_00000
+

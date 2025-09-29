@@ -16,7 +16,7 @@ export default {
       id: user.id,                 // (pair-wise) 128-bit Base64url or Uint8Array (blob)
       lang: user.lang,             // check against your supported languages; fallback to "en"
       userAgent: user.userAgent,   //(pair-wise) store in KV; if mismatch later, hint client to clear caches
-      cryptoKey: user.cryptoKey,         //(pair-wise) 256-bit Base64url or Uint8Array (blob)
+      cryptoKey: user.cryptoKey,   //(pair-wise) 256-bit Base64url or Uint8Array (blob)
     }), { headers: { 'Content-Type': 'application/json' } });
 
     /*
