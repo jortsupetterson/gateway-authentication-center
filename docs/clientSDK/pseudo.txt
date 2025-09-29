@@ -9,12 +9,14 @@ export default {
       request,
       clientId: '<YOUR_AUTHENTICATION_CLIENT_ID_FROM_AUTHENTICATION_CENTER_DEVELOPER_DASHBOARD>',
       saltStorage: env.<YOUR_KV_BINDING>,
-      dataType: 'base64url' // or 'blob'
+      dataType: 'base64url', // or 'blob'
     });
 
     return new Response(JSON.stringify({
-      id: user.id,         // 128-bit Base64url or Uint8Array (blob)
-      cryptokey: user.key  // 256-bit Base64url or Uint8Array (blob)
+      id: user.id,                 // (pair-wise) 128-bit Base64url or Uint8Array (blob)
+      lang: user.lang,             // check against your supported languages; fallback to "en"
+      userAgent: user.userAgent,   //(pair-wise) store in KV; if mismatch later, hint client to clear caches
+      cryptoKey: user.cryptoKey,         //(pair-wise) 256-bit Base64url or Uint8Array (blob)
     }), { headers: { 'Content-Type': 'application/json' } });
 
     /*
