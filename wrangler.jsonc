@@ -21,6 +21,7 @@
 	"observability": {
 		"enabled": true
 	},
+	"minify": true,
 	"d1_databases": [
 		{
 			"database_id": "3264faca-2f1f-412c-98d8-441d5daa8c56",
@@ -28,7 +29,7 @@
 			"remote": true
 		}
 	],
-	"placement": { "mode": "smart" }
+	"placement": { "mode": "smart" },
 	/**
 	 * Bindings
 	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
@@ -53,5 +54,5 @@
 	 * Service Bindings (communicate between multiple Workers)
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
 	 */
-	// "services": [{ "binding": "MY_SERVICE", "service": "my-service" }]
+	"services": [{ "binding": "addressService", "service": "awa-address-service", "entrypoint": "AwaAddressService", "remote": true }]
 }

@@ -9,11 +9,11 @@ then of course for both we start with virtual shard as much as declared and add 
 
 for relying parties we might consider maybe 96 shards because at the end of the day there is a limited ammount of applications on the web
 
-AAOTW_<RESOURCE>_PS_<NNNNN>
+AAOTW_<RESOURCE>_D1S_<NNNNNNN>
 
-AAOTW_IDS_PS_00000
+AAOTW_APPLICATIONS_D1_1234567
 
-AAOTW_RPS_PS_00000
+AAOTW_ADDRESSES_D1_1234567
 
-AAOTW_CREDENTIALS_PS_00000
+AAOTW_CREDENTIALS_D1_1234567
 

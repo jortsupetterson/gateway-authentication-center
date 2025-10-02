@@ -1,17 +1,17 @@
 import { virtualizeCookie } from './components/cookieVirtualizer.js';
 import { generateHeaders } from './components/headersGenerator.js';
-import { generateNonce } from './components/nonceGenerator.js';
 import { quessLanguage } from './components/languageQuesser.js';
 import pageGenerator from './components/pageGenerator.js';
 import handlerMap from './components/handlerMap.js';
 import { fetchRelyingParty } from './components/relyingPartyFetcher.js';
+import byteCodec from './utilities/byteCodec.js';
 export default {
 	async fetch({ cf, url, headers }, env, ctx) {
 		try {
 			const { origin, pathname, searchParams } = new URL(url);
 			const relyingParty = fetchRelyingParty(env, searchParams);
 			const [nonce, virtualCookie, virtualPath] = await Promise.all([
-				generateNonce(24),
+				byteCodec.getBase64url(24),
 				virtualizeCookie(await headers.get('cookie')),
 				pathname.split('/').filter(Boolean),
 			]);
