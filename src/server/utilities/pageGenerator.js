@@ -4,7 +4,7 @@ import description from '../i18n/2-description.js';
 import locale from '../i18n/3-locale.js';
 import social_sharing_image from '../i18n/4-social-sharing-image.js';
 
-export default async function pageGenerator(env, lang, view, nonce, cookie, headers) {
+export default async function pageGenerator(env, lang, view, nonce, cookie, requestHeaders) {
 	return /*html*/ `
 <!DOCTYPE html>
 <html lang="${lang}">

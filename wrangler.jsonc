@@ -9,13 +9,17 @@
 	"main": "./dist/api/entrypoint.js",
 	"compatibility_date": "2025-09-24",
 	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"vars": {
+		"KID_CURRENT": "2025Q4",
+		"LEGACY_KIDS": ["2025Q2", "2025Q3"],
+		"ACS_EMAIL_ENDPOINT": "https://communications-client.europe.communication.azure.com/emails:send?api-version=2025-09-01"
+	},
 	"build": {
 		"watch_dir": "./src",
 		"command": "node build.js",
 		"cwd": "."
 	},
 	"assets": {
-		// The path to the directory containing the `index.html` file to be served at `/`
 		"directory": "./dist/assets"
 	},
 	"observability": {
@@ -30,6 +34,36 @@
 		}
 	],
 	"placement": { "mode": "smart" },
+	"kv_namespaces": [
+		{
+			"binding": "KV_CACHE",
+			"id": "a0336613efda4f138439798c4df9fa25",
+			"preview_id": "8086bce4f4724e9a89d3c02334b6611e",
+			"remote": true
+		}
+	],
+	"secrets_store_secrets": [
+		{
+			"binding": "KEY_2025Q4",
+			"secret_name": "KEY_2025Q4",
+			"store_id": "d218845e95eb47b3ba53bf34577cb94f"
+		},
+		{
+			"binding": "KEY_2025Q3",
+			"secret_name": "KEY_2025Q3",
+			"store_id": "d218845e95eb47b3ba53bf34577cb94f"
+		},
+		{
+			"binding": "KEY_2025Q2",
+			"secret_name": "KEY_2025Q2",
+			"store_id": "d218845e95eb47b3ba53bf34577cb94f"
+		},
+		{
+			"binding": "ACS_ACCESS_KEY",
+			"secret_name": "ACS_ACCESS_KEY",
+			"store_id": "d218845e95eb47b3ba53bf34577cb94f"
+		}
+	],
 	/**
 	 * Bindings
 	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including

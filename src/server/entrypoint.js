@@ -1,10 +1,24 @@
 import { virtualizeCookie } from './components/cookieVirtualizer.js';
 import { generateHeaders } from './components/headersGenerator.js';
 import { quessLanguage } from './components/languageQuesser.js';
-import pageGenerator from './components/pageGenerator.js';
-import handlerMap from './components/handlerMap.js';
 import { fetchRelyingParty } from './components/relyingPartyFetcher.js';
+import handlerMap from './components/handlerMap.js';
+
 import byteCodec from './utilities/byteCodec.js';
+import pageGenerator from './utilities/pageGenerator.js';
+import { crypter } from './utilities/crypter.js';
+import { maccer } from './utilities/maccer.js';
+
+globalThis.utils = {
+	pageGenerator,
+	byteCodec,
+	crypter,
+	maccer,
+};
+
+globalThis.te = new TextEncoder();
+globalThis.td = new TextDecoder();
+
 export default {
 	async fetch({ cf, url, headers }, env, ctx) {
 		try {
@@ -30,9 +44,8 @@ export default {
 				nonce,
 				cookie: virtualCookie,
 				params: Object.fromEntries(searchParams),
-				headers,
+				requestHeaders: headers,
 				relyingParty,
-				pageGenerator,
 				responseHeaders: await generateHeaders(lang, nonce),
 			});
 		} catch (error) {
